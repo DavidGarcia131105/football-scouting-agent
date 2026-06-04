@@ -33,3 +33,20 @@ def test_system_prompt_hides_tool_metadata_from_final_user_response():
 def test_system_prompt_avoids_claiming_unknown_season_status():
     assert "season_status" in SYSTEM_PROMPT
     assert "no afirmes que la temporada está en curso o finalizada" in SYSTEM_PROMPT
+
+
+def test_system_prompt_routes_current_news_to_tavily():
+    assert "Usa Tavily" in SYSTEM_PROMPT
+    assert "noticias recientes" in SYSTEM_PROMPT
+    assert "lesiones" in SYSTEM_PROMPT
+
+
+def test_system_prompt_routes_player_stats_to_fbref():
+    assert "Usa FBref" in SYSTEM_PROMPT
+    assert "estadísticas de temporada" in SYSTEM_PROMPT
+    assert "métricas de jugador" in SYSTEM_PROMPT
+
+
+def test_system_prompt_avoids_tools_for_conceptual_explanations():
+    assert "No uses tools" in SYSTEM_PROMPT
+    assert "explicaciones conceptuales" in SYSTEM_PROMPT
