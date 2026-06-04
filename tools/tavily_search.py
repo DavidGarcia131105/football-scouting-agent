@@ -8,7 +8,7 @@ def create_tavily_search_tool(settings: Settings) -> TavilySearch:
         raise ValueError("Missing API key for Tavily search: TAVILY_API_KEY")
 
     return TavilySearch(
-        api_key=settings.tavily_api_key,
+        tavily_api_key=settings.tavily_api_key,
         max_results=5,
         topic="general",
         search_depth="basic",
