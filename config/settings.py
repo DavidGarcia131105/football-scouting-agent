@@ -1,5 +1,6 @@
 from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
 
 SUPPORTED_MODELS = {
     "deepseek": {"deepseek-chat", "deepseek-reasoner"},
@@ -27,6 +28,7 @@ class Settings(BaseSettings):
     openai_api_key: str | None = Field(default=None, alias="OPENAI_API_KEY")
     anthropic_api_key: str | None = Field(default=None, alias="ANTHROPIC_API_KEY")
     tavily_api_key: str | None = Field(default=None, alias="TAVILY_API_KEY")
+    soccerdata_dir: Path = Field(default="./data/soccerdata", alias="SOCCERDATA_DIR")
 
     llm_fallback_1_provider: str | None = Field(
         default="groq", alias="LLM_FALLBACK_1_PROVIDER"
